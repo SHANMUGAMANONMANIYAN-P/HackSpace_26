@@ -74,11 +74,12 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log('====================================================');
   console.log(`🌱 GrowthMind Complete Production Application is LIVE!`);
-  console.log(`🎯 Single Application URL: http://localhost:${PORT}`);
+  console.log(`🎯 Server listening on 0.0.0.0:${PORT}`);
   console.log(`🚀 USP: Others personalize what you learn. GrowthMind personalizes how you grow.`);
   console.log(`📦 Database: Persistent Disk Storage (${db.data.users.length} Users Seeded)`);
   console.log('====================================================');
 });
+

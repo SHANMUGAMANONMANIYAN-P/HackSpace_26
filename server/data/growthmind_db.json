@@ -152,6 +152,33 @@
       "role": "STUDENT",
       "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=Kavya%20S",
       "createdAt": "2026-10-05T06:31:59.145Z"
+    },
+    {
+      "id": "usr-1791190313653",
+      "name": "Kavya S",
+      "email": "kavya.test.1791190313592@mind.edu",
+      "passwordHash": "$2b$10$wNWs.yOSsINf5duuzJhMJe6aMRWJxt/kYwQypsPRiZRbllZGeCYZ.",
+      "role": "STUDENT",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=Kavya%20S",
+      "createdAt": "2026-10-05T08:51:53.653Z"
+    },
+    {
+      "id": "usr-1791190313832",
+      "name": "Nikhil R",
+      "email": "nikhil.test.1791190313770@mind.edu",
+      "passwordHash": "$2b$10$WwIMRavywGhrP3YjdXgX4ueuguMZ6skP/UIbW0OM0L1OstC7teAKO",
+      "role": "STUDENT",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=Nikhil%20R",
+      "createdAt": "2026-10-05T08:51:53.832Z"
+    },
+    {
+      "id": "usr-1791190314151",
+      "name": "Ananya Ramesh",
+      "email": "growth.student.1791190314091@university.edu",
+      "passwordHash": "$2b$10$oAgr9snac4EooB7kKnsI3uIVfMqKtvrFvUjf.K5idHUoOr6qhG.wC",
+      "role": "STUDENT",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=Ananya%20Ramesh",
+      "createdAt": "2026-10-05T08:51:54.151Z"
     }
   ],
   "student_profiles": [
@@ -432,6 +459,61 @@
       "totalXP": 450,
       "createdAt": "2026-10-05T06:31:59.146Z",
       "updatedAt": "2026-10-05T06:31:59.218Z"
+    },
+    {
+      "studentId": "usr-1791190313653",
+      "department": "Computer Science & Engineering",
+      "year": "Year 2",
+      "semester": "Semester 3",
+      "academicDetails": "Computer Science & Engineering Year 2/Semester 3",
+      "interests": [
+        "Data Structures",
+        "C Programming"
+      ],
+      "goals": "Master Algorithms & Systems Architecture",
+      "isOnboarded": true,
+      "currentScore": 49,
+      "streakDays": 1,
+      "learningHours": 10.5,
+      "totalXP": 450,
+      "createdAt": "2026-10-05T08:51:53.655Z",
+      "updatedAt": "2026-10-05T08:51:53.736Z"
+    },
+    {
+      "studentId": "usr-1791190313832",
+      "department": "Electrical Engineering",
+      "year": "Year 3",
+      "semester": "Semester 1",
+      "academicDetails": "Electrical Engineering Year 3/Semester 1",
+      "interests": [],
+      "goals": "Strengthen core CS fundamentals",
+      "isOnboarded": false,
+      "currentScore": 50,
+      "streakDays": 1,
+      "learningHours": 0,
+      "totalXP": 100,
+      "createdAt": "2026-10-05T08:51:53.833Z",
+      "updatedAt": "2026-10-05T08:51:53.833Z"
+    },
+    {
+      "studentId": "usr-1791190314151",
+      "department": "Artificial Intelligence & Data Science",
+      "year": "Year 2",
+      "semester": "Semester 4",
+      "academicDetails": "Artificial Intelligence & Data Science Year 2/Semester 3",
+      "interests": [
+        "Machine Learning",
+        "Python",
+        "Data Structures"
+      ],
+      "goals": "Crack Tier 1 AI Engineer Internship",
+      "isOnboarded": false,
+      "currentScore": 50,
+      "streakDays": 1,
+      "learningHours": 0,
+      "totalXP": 100,
+      "createdAt": "2026-10-05T08:51:54.152Z",
+      "updatedAt": "2026-10-05T08:51:54.250Z"
     }
   ],
   "topics": [
@@ -898,6 +980,28 @@
         "Functions": 0
       },
       "timestamp": "2026-10-05T06:39:01.667Z"
+    },
+    {
+      "id": "att-1791190313676",
+      "studentId": "usr-1791190313653",
+      "assessmentId": "asm-diag-init",
+      "score": 33,
+      "topicScores": {
+        "Variables": 80,
+        "Loops": 60,
+        "Functions": 40
+      },
+      "timestamp": "2026-10-05T08:51:53.676Z"
+    },
+    {
+      "id": "att-1791190313727",
+      "studentId": "usr-1791190313653",
+      "assessmentId": "asm-func",
+      "score": 100,
+      "topicScores": {
+        "Functions": 100
+      },
+      "timestamp": "2026-10-05T08:51:53.727Z"
     }
   ],
   "learning_activities": [
@@ -1466,6 +1570,132 @@
         }
       ],
       "updatedAt": "2026-10-05T06:31:59.219Z"
+    },
+    {
+      "studentId": "usr-1791190313653",
+      "performance": 49,
+      "improvementTrend": 20,
+      "consistency": 55,
+      "mastery": 48,
+      "growthScore": 48,
+      "classification": "Late Bloomer – High Growth Potential",
+      "radarMetrics": [
+        {
+          "subject": "Current Performance",
+          "value": 49,
+          "fullMark": 100
+        },
+        {
+          "subject": "Improvement Rate",
+          "value": 60,
+          "fullMark": 100
+        },
+        {
+          "subject": "Consistency",
+          "value": 75,
+          "fullMark": 100
+        },
+        {
+          "subject": "Mistake Control",
+          "value": 65,
+          "fullMark": 100
+        },
+        {
+          "subject": "Topic Mastery",
+          "value": 48,
+          "fullMark": 100
+        },
+        {
+          "subject": "Challenge Handling",
+          "value": 75,
+          "fullMark": 100
+        }
+      ],
+      "updatedAt": "2026-10-05T08:51:53.753Z"
+    },
+    {
+      "studentId": "usr-1791190313832",
+      "performance": 50,
+      "improvementTrend": 0,
+      "consistency": 20,
+      "mastery": 40,
+      "growthScore": 50,
+      "classification": "Developing Learner",
+      "radarMetrics": [
+        {
+          "subject": "Current Performance",
+          "value": 50,
+          "fullMark": 100
+        },
+        {
+          "subject": "Improvement Rate",
+          "value": 20,
+          "fullMark": 100
+        },
+        {
+          "subject": "Consistency",
+          "value": 20,
+          "fullMark": 100
+        },
+        {
+          "subject": "Mistake Control",
+          "value": 50,
+          "fullMark": 100
+        },
+        {
+          "subject": "Topic Mastery",
+          "value": 40,
+          "fullMark": 100
+        },
+        {
+          "subject": "Challenge Handling",
+          "value": 40,
+          "fullMark": 100
+        }
+      ],
+      "updatedAt": "2026-10-05T08:51:53.833Z"
+    },
+    {
+      "studentId": "usr-1791190314151",
+      "performance": 50,
+      "improvementTrend": 0,
+      "consistency": 20,
+      "mastery": 40,
+      "growthScore": 50,
+      "classification": "Developing Learner",
+      "radarMetrics": [
+        {
+          "subject": "Current Performance",
+          "value": 50,
+          "fullMark": 100
+        },
+        {
+          "subject": "Improvement Rate",
+          "value": 20,
+          "fullMark": 100
+        },
+        {
+          "subject": "Consistency",
+          "value": 20,
+          "fullMark": 100
+        },
+        {
+          "subject": "Mistake Control",
+          "value": 50,
+          "fullMark": 100
+        },
+        {
+          "subject": "Topic Mastery",
+          "value": 40,
+          "fullMark": 100
+        },
+        {
+          "subject": "Challenge Handling",
+          "value": 40,
+          "fullMark": 100
+        }
+      ],
+      "updatedAt": "2026-10-05T08:51:54.153Z"
     }
   ],
   "recommendations": [],
@@ -1609,6 +1839,26 @@
       "progress": 75,
       "duePeriod": "14 Days",
       "createdAt": "2026-10-05T06:31:59.313Z"
+    },
+    {
+      "id": "gol-1791190313697",
+      "studentId": "usr-1791190313653",
+      "description": "Master Algorithms & Systems Architecture",
+      "target": "Achieve ≥75% in Core CS Modules",
+      "status": "In Progress",
+      "progress": 33,
+      "duePeriod": "30 Days",
+      "createdAt": "2026-10-05T08:51:53.697Z"
+    },
+    {
+      "id": "gol-1791190313857",
+      "studentId": "usr-1791190313653",
+      "description": "Master Binary Search Trees and Graph Traversals",
+      "target": "Score ≥85% in Advanced DSA Drill",
+      "status": "In Progress",
+      "progress": 75,
+      "duePeriod": "14 Days",
+      "createdAt": "2026-10-05T08:51:53.857Z"
     }
   ],
   "achievements": [
@@ -1701,6 +1951,15 @@
       "description": "Completed onboarding & diagnostic baseline",
       "XP": 250,
       "timestamp": "2026-10-05T06:31:59.187Z"
+    },
+    {
+      "id": "ach-1791190313706",
+      "studentId": "usr-1791190313653",
+      "badge": "Growth DNA Initialized",
+      "icon": "Sparkles",
+      "description": "Completed onboarding & diagnostic baseline",
+      "XP": 250,
+      "timestamp": "2026-10-05T08:51:53.706Z"
     }
   ],
   "mistake_logs": [
