@@ -3,16 +3,16 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import { AuthProvider } from './context/AuthContext';
-import { NotificationProvider } from './context/NotificationContext';
+import { GrowthProvider } from './context/GrowthContext';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <NotificationProvider>
+        <GrowthProvider>
           <App />
-        </NotificationProvider>
+        </GrowthProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>

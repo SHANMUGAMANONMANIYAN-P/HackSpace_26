@@ -1,24 +1,23 @@
+// client/src/pages/LoginPage.jsx
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { HeartHandshake, LogIn, AlertCircle, Zap, Shield } from 'lucide-react';
+import { Sprout, LogIn, AlertCircle, Sparkles, Lock, Mail, ArrowRight, ShieldCheck, GraduationCap } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('password123');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const { login } = useAuth();
+  const { login, switchPersona } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-
-  const isExpired = new URLSearchParams(location.search).get('expired');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email || !password) {
-      setError('Please provide email and password.');
+      setError('Please provide your email and password.');
       return;
     }
 
@@ -26,162 +25,178 @@ export default function LoginPage() {
       setLoading(true);
       setError('');
       const res = await login(email, password);
-      if (res.success) {
-        navigate('/explore');
-      } else {
-        setError(res.message || 'Invalid credentials.');
+      if (res && res.success) {
+        if (res.user.role === 'ADMIN') {
+          navigate('/admin');
+        } else if (res.user.role === 'FACULTY') {
+          navigate('/faculty');
+        } else if (res.user.isOnboarded === false) {
+          navigate('/onboarding');
+        } else {
+          navigate('/dashboard');
+        }
       }
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed. Please check credentials.');
+      setError(err.response?.data?.message || err.message || 'Invalid email or password.');
     } finally {
       setLoading(false);
     }
   };
 
-  const handleQuickLogin = async (demoEmail) => {
-    setEmail(demoEmail);
-    setPassword('password123');
+  const handleQuickPersona = async (personaId) => {
     try {
       setLoading(true);
       setError('');
-      const res = await login(demoEmail, 'password123');
-      if (res.success) {
-        navigate('/explore');
-      } else {
-        setError(res.message || 'Quick login failed.');
+      const switchedUser = await switchPersona(personaId);
+      if (switchedUser) {
+        if (switchedUser.role === 'ADMIN') {
+          navigate('/admin');
+        } else if (switchedUser.role === 'FACULTY') {
+          navigate('/faculty');
+        } else {
+          navigate('/dashboard');
+        }
       }
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed.');
+      setError('Could not switch demo persona.');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
+    <div className="min-h-[85vh] flex items-center justify-center px-4 py-12 bg-slate-50">
       <div className="max-w-md w-full space-y-6">
-        {/* Header */}
+        
+        {/* Brand Header */}
         <div className="text-center">
-          <div className="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center mx-auto mb-3 shadow-md shadow-indigo-200">
-            <HeartHandshake className="w-7 h-7" />
+          <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 text-white flex items-center justify-center mx-auto mb-3 shadow-lg shadow-emerald-500/20">
+            <Sprout className="w-8 h-8 stroke-[2.2]" />
           </div>
-          <h2 className="font-display text-2xl font-bold text-slate-900 tracking-tight">
-            Welcome to Community Help Hub
+          <h2 className="font-display text-3xl font-black text-slate-900 tracking-tight">
+            Welcome to Growth<span className="text-emerald-600">Mind</span>
           </h2>
-          <p className="text-xs text-slate-500 mt-1">
-            Sign in to discover requests, offer help, and coordinate assistance.
+          <p className="text-xs text-slate-500 mt-1 font-medium">
+            “Not Just a Score. A Growth Journey.”
           </p>
         </div>
 
         {/* 1-Click Judge Quick Login Personas */}
-        <div className="bg-amber-50/80 rounded-2xl border border-amber-200 p-4 shadow-xs">
-          <div className="flex items-center gap-1.5 text-amber-900 font-bold text-xs mb-2">
-            <Zap className="w-4 h-4 fill-amber-500 text-amber-600" />
-            <span>Judge 1-Click Quick Login Personas</span>
+        <div className="bg-slate-900 text-white rounded-2xl p-4 shadow-md border border-slate-800 space-y-2.5">
+          <div className="flex items-center justify-between text-xs font-bold text-amber-400">
+            <span className="flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+              1-Click Judge Presets:
+            </span>
+            <span className="text-[10px] text-slate-400 font-normal">Instant Authentication</span>
           </div>
+          
           <div className="grid grid-cols-2 gap-2 text-xs">
             <button
               type="button"
-              onClick={() => handleQuickLogin('sathesh@example.com')}
-              className="p-2 rounded-xl bg-white border border-amber-200 hover:border-indigo-400 hover:bg-indigo-50/50 text-left transition-all"
+              onClick={() => handleQuickPersona('usr-tharun')}
+              className="p-2.5 rounded-xl bg-slate-800 hover:bg-emerald-600 text-left transition-all border border-slate-700 hover:border-emerald-500 group"
             >
-              <span className="font-bold text-slate-900 block truncate">Sathesh V</span>
-              <span className="text-[10px] text-slate-500 block truncate">Requester Role</span>
+              <span className="font-bold text-white block truncate group-hover:text-white">🌱 Tharun</span>
+              <span className="text-[10px] text-emerald-400 block truncate group-hover:text-emerald-100">Late Bloomer (+28%)</span>
             </button>
 
             <button
               type="button"
-              onClick={() => handleQuickLogin('tharun@example.com')}
-              className="p-2 rounded-xl bg-white border border-amber-200 hover:border-indigo-400 hover:bg-indigo-50/50 text-left transition-all"
+              onClick={() => handleQuickPersona('usr-aadhya')}
+              className="p-2.5 rounded-xl bg-slate-800 hover:bg-purple-600 text-left transition-all border border-slate-700 hover:border-purple-500 group"
             >
-              <span className="font-bold text-slate-900 block truncate">Tharun R</span>
-              <span className="text-[10px] text-slate-500 block truncate">Helper 1</span>
+              <span className="font-bold text-white block truncate group-hover:text-white">👑 Aadhya</span>
+              <span className="text-[10px] text-purple-400 block truncate group-hover:text-purple-100">Top Performer (92%)</span>
             </button>
 
             <button
               type="button"
-              onClick={() => handleQuickLogin('priya@example.com')}
-              className="p-2 rounded-xl bg-white border border-amber-200 hover:border-indigo-400 hover:bg-indigo-50/50 text-left transition-all"
+              onClick={() => handleQuickPersona('usr-sharma')}
+              className="p-2.5 rounded-xl bg-slate-800 hover:bg-indigo-600 text-left transition-all border border-slate-700 hover:border-indigo-500 group"
             >
-              <span className="font-bold text-slate-900 block truncate">Priya S</span>
-              <span className="text-[10px] text-slate-500 block truncate">Helper 2 / Peer</span>
+              <span className="font-bold text-white block truncate group-hover:text-white">🎓 Prof. Sharma</span>
+              <span className="text-[10px] text-indigo-300 block truncate group-hover:text-indigo-100">Faculty Command</span>
             </button>
 
             <button
               type="button"
-              onClick={() => handleQuickLogin('admin@communityhub.org')}
-              className="p-2 rounded-xl bg-white border border-amber-200 hover:border-rose-400 hover:bg-rose-50/50 text-left transition-all"
+              onClick={() => handleQuickPersona('usr-admin')}
+              className="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-left transition-all border border-slate-700 group"
             >
-              <span className="font-bold text-rose-900 block truncate flex items-center gap-1">
-                <Shield className="w-3 h-3 text-rose-600" /> Admin User
-              </span>
-              <span className="text-[10px] text-slate-500 block truncate">Moderation</span>
+              <span className="font-bold text-white block truncate">🛡 System Admin</span>
+              <span className="text-[10px] text-slate-400 block truncate">Platform Admin</span>
             </button>
           </div>
         </div>
 
-        {/* Login Card */}
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-xs">
-          {isExpired && (
-            <div className="mb-4 p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-800 flex items-center gap-2">
-              <AlertCircle className="w-4 h-4 text-amber-600 shrink-0" />
-              <span>Your session expired. Please sign in again.</span>
-            </div>
-          )}
-
+        {/* Real Sign In Form */}
+        <div className="bg-white rounded-3xl border border-slate-200/90 p-6 sm:p-8 shadow-xs space-y-5">
           {error && (
-            <div className="mb-4 p-3 rounded-xl bg-rose-50 border border-rose-200 text-xs text-rose-700 flex items-center gap-2">
-              <AlertCircle className="w-4 h-4 text-rose-500 shrink-0" />
+            <div className="p-3.5 rounded-2xl bg-rose-50 border border-rose-200 text-xs text-rose-700 flex items-start gap-2.5">
+              <AlertCircle className="w-4 h-4 text-rose-500 shrink-0 mt-0.5" />
               <span>{error}</span>
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
+              <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider">
                 Email Address
               </label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="name@example.com"
-                className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                required
-              />
+              <div className="relative">
+                <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="e.g. tharun.growth@mind.edu"
+                  className="w-full pl-10 pr-4 py-2.5 text-xs sm:text-sm rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-slate-50/50"
+                  required
+                />
+              </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
-                Password
-              </label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                required
-              />
+              <div className="flex items-center justify-between mb-1.5">
+                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+                  Password
+                </label>
+                <Link to="/forgot-password" className="text-[11px] font-semibold text-emerald-600 hover:underline">
+                  Forgot Password?
+                </Link>
+              </div>
+              <div className="relative">
+                <Lock className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••"
+                  className="w-full pl-10 pr-4 py-2.5 text-xs sm:text-sm rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-slate-50/50"
+                  required
+                />
+              </div>
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-md shadow-indigo-200 disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
+              className="w-full py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm shadow-md shadow-emerald-600/20 disabled:opacity-50 transition-all flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98]"
             >
               <LogIn className="w-4 h-4" />
-              {loading ? 'Authenticating...' : 'Sign In'}
+              {loading ? 'Authenticating...' : 'Sign In to GrowthMind'}
             </button>
           </form>
 
-          <div className="mt-6 text-center text-xs text-slate-500">
-            Don't have an account?{' '}
-            <Link to="/register" className="text-indigo-600 font-bold hover:underline">
-              Create an account
+          <div className="pt-2 text-center text-xs text-slate-500 border-t border-slate-100">
+            Don't have an account yet?{' '}
+            <Link to="/register" className="text-emerald-700 font-extrabold hover:underline">
+              Create Student Account
             </Link>
           </div>
         </div>
+
       </div>
     </div>
   );

@@ -1,167 +1,105 @@
-# Community Help Hub 🤝
+# 🌱 GrowthMind – AI Student Growth & Learning Mentor
 
-> **PS58 – Community Help Request Platform**  
-> **Team:** Neon Nexus  
-> **Architecture:** 100% Software Full-Stack Web Application (React + Node.js + Express + MongoDB)  
-> **Philosophy:** Zero AI • Zero Blockchain • Zero Credits/Currency • Pure Coordinated Community Action  
+> **“Not Just a Score. A Growth Journey.”**  
+> *“Others personalize what you learn. GrowthMind personalizes how you grow.”*
 
 ---
 
-## 📌 Executive Summary
+## 🎯 Single Application URL
 
-**Community Help Hub** is a full-stack community assistance platform that enables people to request and provide help through focused **Help Circles**. Unlike basic request-and-response boards, it supports **multi-helper coordination**, **transparent assistance timelines**, **two-sided completion verification**, and a **contribution passport** that verifiable records community participation.
+### **Single application URL: http://localhost:5000**
 
----
-
-## 🌟 6 Core Differentiating Novelties
-
-### 1. Help Circles
-Instead of an overwhelming, unorganized global feed, requests are scoped to focused communities called **Help Circles** (e.g., *CSE Students*, *College Volunteers*, *Hostel Community*, *ECE Students*). Members can discover requests relevant to their immediate circle or choose to post globally.
-
-### 2. Multi-Helper Capacity ($1 \to N$ Volunteers)
-Traditional platforms assume 1 task = 1 helper. Community Help Hub allows requesters to specify **Required Helpers: $N$** (e.g., 5 volunteers for college event setup). The platform tracks confirmed slots in real-time ($1/5, 2/5 \dots 5/5$) and caps enrollment once capacity is reached.
-
-### 3. Coordinated Assistance Board
-Requesters manage volunteers through an interactive coordination board showing each helper's live status (`Pending`, `Accepted`, `In Progress`, `Completed`, `Rejected`), availability, and direct profile links.
-
-### 4. Two-Sided Verified Assistance Lifecycle
-No single user can unilaterally mark a request finished. We implement a strict two-sided verification protocol:
-1. **Helper Action:** Helper clicks **"Mark Assistance Completed"**
-2. **Requester Action:** Requester verifies and clicks **"Confirm Completion"**
-3. Once all required helpers are verified, the request transitions automatically to **`ASSISTED`** and can be **`CLOSED`**.
-Every transition is permanently logged in an immutable **Request History Timeline**.
-
-### 5. Contribution Passport
-A verifiable, transparent activity profile that celebrates genuine participation without fictional coins, credits, or money:
-- **Help Provided Count**
-- **Help Received Count**
-- **Tasks Closed Count**
-- **Group Activities Count**
-- **Verified Successful Assists Count**
-- **Registered Skills Inventory**
-- **Chronological Verified Activity Stream**
-
-### 6. Transparent Rule-Based Discovery (Zero AI)
-Rather than unexplainable black-box algorithms, request relevance is computed via deterministic, explainable rules:
-- **Same Help Circle Membership**
-- **Matching Registered Skills**
-- **Department Proximity**
-- **Location Matching**
-Each card explicitly displays why it is relevant (e.g., *"Because you belong to College Volunteers Circle and your department matches"*).
+> [!IMPORTANT]
+> The entire application (frontend UI, interactive charts, demo switcher, quiz engine, AI mentor, and backend APIs) is served from this **single URL**. You do not need to open or manage any second URL.
 
 ---
 
-## 🛠️ Tech Stack
+## ⚡ How to Start the Complete Project (One Command)
 
-| Layer | Technologies |
-| :--- | :--- |
-| **Frontend** | React 18, Vite, Tailwind CSS, Lucide Icons, React Router v6, Axios |
-| **Backend** | Node.js, Express.js, JWT, bcryptjs, Morgan, CORS |
-| **Database** | MongoDB, Mongoose *(with seamless embedded In-Memory fallback for zero-dependency hackathon testing!)* |
-| **Security** | Role-Based Access Control, JWT Bearer Tokens, Bcrypt Password Hashing, Input Sanitization |
+From the project root directory:
 
----
-
-## 🚀 Quick Start Guide
-
-### Prerequisites
-- Node.js (v18+) & npm
-
-### 1. Installation
-Install all backend and frontend dependencies:
 ```bash
-# In the root directory:
-npm run install:all
-```
-*(Or navigate into `server` and `client` individually and run `npm install`)*
-
-### 2. Seed Demo Dataset
-Pre-populate 8 realistic users, 4 Help Circles, 10 requests, sample offers, and verified history:
-```bash
-npm run seed
+npm start
 ```
 
-### 3. Start the Application
-In two terminal tabs:
+*(This automatically builds the frontend and starts the unified server on port 5000).*
 
-**Terminal 1 (Backend Server):**
-```bash
-npm run server
-# Server boots on http://localhost:5000 (with auto in-memory mongo or local mongo)
-```
+Open your browser at:
+**`http://localhost:5000`**
 
-**Terminal 2 (Frontend Client):**
-```bash
-npm run client
-# Client opens on http://localhost:5173
+---
+
+## 🚀 The Core Innovation & Vision
+
+Existing learning platforms primarily provide course catalogs, static video lessons, and conventional leaderboard rankings that punish late bloomers with flat percentage averages.
+
+**GrowthMind** flips the paradigm:
+Instead of measuring static marks, **GrowthMind evaluates trajectory velocity, consistency, resilience, and error recovery patterns** to dynamically shape a personalized growth journey for every single student.
+
+```mermaid
+flowchart TD
+    A[Student Diagnostic & Practice Data] --> B[Multi-Factor Growth Engine]
+    B --> C[Student Growth Fingerprint]
+    C --> D1[🌱 Late Bloomer Mode: 5-Step Recovery Roadmap]
+    C --> D2[👑 Top Performer Mode: Beyond the Syllabus]
+    C --> D3[⚠️ Smart Learning Priority: What NOT to Study Yet]
+    D1 & D2 & D3 --> E[Interactive Micro-Drill Quiz]
+    E -->|Real-Time Recalculation| B
+    B --> F[Faculty Growth Comparison Matrix]
 ```
 
 ---
 
-## 🎭 1-Click Demo Login Personas for Hackathon Judges
+## 🏆 Key Features Accessible from the Single URL
 
-The application includes 1-click quick login buttons on the `/login` page and in the top navigation bar:
+1. **1-Click Hackathon Demo Switcher (`DemoSwitcher.jsx`)**:
+   - Pinned at the top of the interface:
+     - 🌱 **Tharun (Late Bloomer)**: 75% score, **$+28\%$ growth momentum**, High Growth Potential
+     - 👑 **Aadhya (Top Performer)**: 92% score, $+4\%$ momentum, Beyond Syllabus Mode
+     - 📚 **Rohan (Developing Learner)**: 61% score, $+12\%$ momentum, Foundation Track
+     - 🔥 **Priya (Consistent Learner)**: 78% score, $+10\%$ momentum, 16-Day Streak
+     - 🎓 **Prof. Sharma (Faculty)**: Cohort Overview & Growth Comparison Matrix
+   - **`⚡ Test Live Quiz`** quick launcher button to test real-time path recalculation.
 
-| Persona | Email | Password | Role & Demo Purpose |
-| :--- | :--- | :--- | :--- |
-| **Sathesh V** | `sathesh@example.com` | `password123` | **Requester Role** (Posted 5-volunteer request, coordinates helpers) |
-| **Tharun R** | `tharun@example.com` | `password123` | **Helper 1** (Offers help, marks assistance completed) |
-| **Priya S** | `priya@example.com` | `password123` | **Helper 2 / Peer** (Assisted Sathesh with C++ in past) |
-| **Admin User** | `admin@communityhub.org` | `password123` | **Administrator** (View analytics, suspend users, resolve reports) |
+2. **Student Growth Fingerprint (`GrowthFingerprint.jsx`)**:
+   - Multi-factor non-punitive radar evaluation (Performance, Improvement Rate, Consistency, Mistake Control, Topic Mastery, Challenge Handling).
+   - Trajectory Area Chart ($40\% \to 48\% \to 57\% \to 68\% \to 75\%$).
 
----
+3. **Late Bloomer Mode: Growth Recovery Plan (`LateBloomerRecovery.jsx`)**:
+   - Priority indicators: 🔴 High Priority (**Functions 48%**, **Arrays 52%**), 🟡 Medium Priority (**Strings 64%**), 🟢 Strong (**Variables 88%**).
+   - 5-step sequential roadmap.
 
-## 🧪 7-Step Hackathon Demo Scenario
+4. **Top Performer Mode: “Beyond the Syllabus” (`TopPerformerBeyond.jsx`)**:
+   - 8 Innovation Tracks: Advanced Graph Algorithms, Route Optimization Microservice, Hackathons, AWS Certifications, Research Papers, Competitive Programming, Campus AI Extension, Peer Mentoring.
 
-You can execute the entire live demo through the UI in under 2 minutes:
+5. **“What Should I NOT Study Now?” – Smart Learning Priority (`WhatNotToStudy.jsx`)**:
+   - Prerequisite conflict engine. Blocks premature topics (e.g. Advanced AI blocked until Functions/Arrays pass) and reveals the sequential prerequisite roadmap.
 
-1. **Step 1:** Log in as **Sathesh V** (`sathesh@example.com`). Click **"Request Help"**, post *"Need 5 volunteers for college event setup"* in the *College Volunteers* Circle with 5 required helpers. Status starts as `OPEN`.
-2. **Step 2:** Click **"Switch Demo Role"** $\to$ select **Tharun R** (`tharun@example.com`). Open **Explore**, filter by *College Volunteers*, open the request, and click **"Offer Help Now"**.
-3. **Step 3:** Switch back to **Sathesh V**. Open the request, see Tharun's offer in the **Helper Coordination Board**, and click **"Accept Helper"**. The slot counter becomes `1 / 5 Confirmed` and status transitions to `ACCEPTED`.
-4. **Step 4:** Click **"Start Assistance"** to transition the request to `IN PROGRESS`.
-5. **Step 5 (Two-Sided Verification):** Switch to **Tharun R**. On the request page, click **"Mark Assistance Completed"**. Switch back to **Sathesh V**, review, and click **"Confirm Completion ✓"**. The status becomes `ASSISTED`.
-6. **Step 6:** Sathesh clicks **"Close Request"** $\to$ request becomes `CLOSED`.
-7. **Step 7:** Open Tharun or Sathesh's **Contribution Passport** (`/profile`) to view the verified activity record, successful assists counter, and updated history.
+6. **Interactive Quiz Engine & Dynamic Path Recalculator (`InteractiveQuizModal.jsx` & `DynamicLearningPath.jsx`)**:
+   - 3-question live drill with instant grading, celebration confetti, and automatic priority shifts from Functions to Arrays!
 
----
+7. **Mistake Analyzer & Score Change Explainer (`MistakeAnalyzer.jsx` & `ScoreChangeExplainer.jsx`)**:
+   - Dissects repeated mistake clusters with code diffs and explains score swings with transparent factor attributions.
 
-## 📡 REST API Summary
+8. **Faculty Dashboard & Growth Comparison (`FacultyDashboard.jsx`)**:
+   - Replaces toxic leaderboards with the **Growth Comparison Matrix**, valuing improvement velocity over static marks.
 
-### Authentication & Passport
-- `POST /api/auth/register` - Register user with skills & department
-- `POST /api/auth/login` - Authenticate user & issue JWT
-- `GET /api/auth/me` - Get current user profile
-- `GET /api/auth/passport/:id?` - Retrieve verified Contribution Passport
-
-### Requests & Discovery
-- `GET /api/requests` - Search & multi-facet filtering
-- `GET /api/requests/relevant` - Transparent rule-based discovery
-- `POST /api/requests` - Create help request
-- `GET /api/requests/:id` - Full request details, timeline, and offers
-- `PATCH /api/requests/:id/status` - Strict state transitions (`OPEN` $\to$ `ACCEPTED` $\to$ `IN PROGRESS` $\to$ `ASSISTED` $\to$ `CLOSED`)
-
-### Multi-Helper Coordination & Verification
-- `POST /api/requests/:id/offers` - Submit help offer
-- `PATCH /api/offers/:id/accept` - Requester accepts helper (slot capacity enforced)
-- `PATCH /api/offers/:id/reject` - Decline offer
-- `PATCH /api/offers/:id/complete` - Helper marks assistance complete (Side 1)
-- `PATCH /api/offers/:id/confirm` - Requester verifies & confirms completion (Side 2)
-
-### Help Circles
-- `GET /api/circles` - List all circles with active request counts
-- `POST /api/circles` - Create a new circle
-- `GET /api/circles/:id` - Circle details & scoped request feed
-- `POST /api/circles/:id/join` - Join circle
-- `DELETE /api/circles/:id/leave` - Leave circle
-
-### Admin & Trust
-- `GET /api/admin/stats` - Live platform analytics
-- `GET /api/admin/users` - User directory
-- `PATCH /api/admin/users/:id/suspend` - Suspend/reinstate user
-- `POST /api/reports` - Submit report
-- `GET /api/admin/reports` - Moderation queue
-- `PATCH /api/admin/reports/:id/resolve` - Resolve report
+9. **AI Mentor Workspace (`AIMentorDrawer.jsx` & `MentorPage.jsx`)**:
+   - Contextual mentor tailored to each student persona with actionable prompt chips.
 
 ---
 
-*Built with ❤️ for the Hackathon by Team **Neon Nexus** (PS58)*
+## 🎬 30-Second Hackathon Demo Flow
+
+1. Open **`http://localhost:5000`** $\to$ Inspect Landing Page hero (*“Not Just a Score. A Growth Journey.”*).
+2. Click **“Try Interactive Demo”** $\to$ Log in as **Tharun (Late Bloomer)**.
+3. Show **Growth Fingerprint**: Highlight $+28\%$ momentum without negative labeling.
+4. Show **Smart Priority**: Click *"What Should I NOT Study Now?"* to show prerequisite gating on Advanced AI.
+5. Click **“⚡ Test Live Quiz”** at the top bar $\to$ Answer 3 questions on Functions $\to$ Submit to watch Functions mastery jump from $48\% \to 64\%$ in real time!
+6. Click **Aadhya (Top Performer)** in the 1-click switcher $\to$ Show *“Beyond the Syllabus”* research and route optimization project.
+7. Click **Prof. Sharma (Faculty)** in the 1-click switcher $\to$ Show the *Growth Comparison Matrix* highlighting Tharun's $+28\%$ momentum over static scores.
+8. End with: *“Others personalize what you learn. GrowthMind personalizes how you grow.”*
+
+---
+
+© 2026 GrowthMind AI Mentor.

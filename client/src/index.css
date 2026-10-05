@@ -4,7 +4,8 @@
 
 @layer base {
   body {
-    @apply bg-slate-50 text-slate-900 selection:bg-indigo-500 selection:text-white;
+    @apply bg-slate-50 text-slate-900 selection:bg-emerald-200 selection:text-emerald-950;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 }
 
@@ -24,9 +25,35 @@
   background: #94a3b8;
 }
 
-/* Glassmorphism helpers */
+/* Modern Card & Glass Styles */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.gradient-growth-text {
+  background: linear-gradient(135deg, #059669 0%, #10b981 50%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-hero-bg {
+  background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.08) 0%, rgba(99, 102, 241, 0.05) 50%, rgba(248, 250, 252, 0) 100%);
+}
+
+.badge-glow {
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+}
+
+/* Shimmer animation for active roadmap nodes */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2.5s infinite;
 }
